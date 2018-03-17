@@ -83,7 +83,7 @@ namespace Microsoft.AspNetCore.Identity.AspNetMembershipAdapter
                 AspNetUser dbUser = _dbcontext.AspNetUsers
                     .Include(u => u.AspNetApplication)
                     .Include(u => u.AspNetMembership)
-                    .SingleOrDefault(u => u.LoweredUserName == normalizedEmail.ToLower());
+                    .SingleOrDefault(u => u.AspNetMembership.Email.ToLower() == normalizedEmail.ToLower());
 
                 if (dbUser == null)
                 {
@@ -243,7 +243,7 @@ namespace Microsoft.AspNetCore.Identity.AspNetMembershipAdapter
             to.UserName = from.UserName;
             to.NormalizedUserName = from.LoweredUserName.ToUpper();
             to.Email = from.UserName;
-            to.NormalizedEmail = from.UserName.ToLower();
+            to.NormalizedEmail = from.AspNetMembership.Email.ToUpper();
             to.EmailConfirmed = true;
             to.PasswordHash = from.AspNetMembership.Password;
             to.PasswordSalt = from.AspNetMembership.PasswordSalt;
