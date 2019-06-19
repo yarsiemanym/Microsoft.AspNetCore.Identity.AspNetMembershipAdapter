@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Microsoft.AspNetCore.Identity.AspNetMembershipAdapter
 {
     public class AspNetApplication
     {
+        [Key]
         public Guid ApplicationId { get; set; }
         public string ApplicationName { get; set; }
         public string LoweredApplicationName { get; set; }
