@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Microsoft.AspNetCore.Identity.AspNetMembershipAdapter
@@ -7,6 +8,7 @@ namespace Microsoft.AspNetCore.Identity.AspNetMembershipAdapter
     public class AspNetMembership
     {
         public Guid ApplicationId { get; set; }
+        [Key]
         public Guid UserId { get; set; }
         public string Password { get; set; }
         public int PasswordFormat { get; set; }
